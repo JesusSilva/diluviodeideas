@@ -10,6 +10,9 @@ const mongoose = require('mongoose');
 const {dbURL} = require('./config');
 const cors = require('cors');
 const auth = require('./routes/auth');
+const indexRouter = require('./routes/index')
+const ideasRouter = require('./routes/ideas')
+const mensajesRouter = require('./routes/mensajes')
 
 const app = express();
 
@@ -53,16 +56,21 @@ app.use(session({
 require('./passport')(app)
 
 app.use('/api/auth', auth);
-
-app.get('/', (req, res, next) => {
-  res.render('index', { title: "Pagina principal" })
-});
+app.use('/', indexRouter);
+app.use('/ideas', ideasRouter);
+app.use('/mp', mensajesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.title = "Diluvio de Ideas";
+  next();
 });
 
 // error handler
