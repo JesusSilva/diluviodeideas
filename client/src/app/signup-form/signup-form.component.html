@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md text-center">
+        <h1>ESTE ES EL PUTO SIGNUP</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <form>
+                <label> Username </label>
+                <input type="text" [(ngModel)]="username" name="username"/>
+                <br>
+                <label> Name </label>
+                <input type="text" [(ngModel)]="name" name="username"/>
+                <br>
+                <label> Especialidad </label>
+                <input type="text" [(ngModel)]="espec" name="username"/>
+                <br>
+                <label> Password </label>
+                <input type="password" [(ngModel)]="password" name="password"/>
+                <br>
+                <label> Confirmar Password </label>
+                <input type="password" [(ngModel)]="confirm_password" name="confirm_password"/>
+                <br>
+                <label> Correo electrónico </label>
+                <input type="text" [(ngModel)]="email" name="email"/>
+                <br>
+                <label> Sobre ti... </label>
+                <input type="text" [(ngModel)]="about_me" name="about_me"/>
+                <br>
+                <label> Avatar </label>
+                <input type="file" [(ngModel)]="avatar" name="avatar"/>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <button (click)="signup()" class="btn btn-lg btn-primary btn-block"> Signup </button>
+        </div>
+        <div class="col-md-3">
+            <p *ngIf="error" class="error"> {{ error }} </p>
+        </div>
+        <div *ngIf="session.getUser()">
+            <pre> {{ session.getUser() | json }} </pre>
+            <button (click)="logout()"> Logout </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <a  [routerLink]="['/']"><button type="submit" class="btn btn-lg btn-primary btn-block">Inicio</button></a>
+        </div>
+    </div>
+</div>

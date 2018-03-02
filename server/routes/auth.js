@@ -55,6 +55,13 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
+router.get('/profile/:id', (req, res, next) => {
+  const userId = req.params.id;
+  User.findOne({ _id: userId })
+    .then(user => res.status(200).json({message: 'Mostrando profile', user:user}))
+    .catch(e => res.status(500).json({ message: 'Imposible mostrar el perfil' }));
+});
+
 router.get('/edit/:id', (req, res, next) => {
   const userId = req.params.id;
   User.find({ _id: userId })
@@ -66,12 +73,24 @@ router.post('/edit/:id', (req, res, next) => {
   const userId = req.params.id
   const {name,email,espec,password,confirm_password,about_me,avatar} = req.body;
   const salt = bcrypt.genSaltSync(10);
-  const hashPass = bcrypt.hashSync(password, salt);
+  
   if (password !== confirm_password && password !=="") return res.status(500).json({ message: 'Passwords do not match' });
+  console.log("===========================================================");
+  console.log("tu password de mierda es: ",password);
+  console.log("===========================================================");
 
   let updates;
-  if (req.file) { updates = { name,email,espec,password: hashPass,about_me, avatar: req.file.filename } }
-  else {updates = { name,email,espec,password: hashPass,about_me }}
+  if (req.file) { updates = { name,email,espec,about_me, avatar: req.file.filename } 
+    if (password !== '') {
+      const hashPass = bcrypt.hashSync(req.body.password, salt);
+      updates = { name,email,espec,password:hashPass,about_me, avatar: req.file.filename }
+    }
+  }else {updates = { name,email,espec,about_me }
+  if (password !== '') {
+    const hashPass = bcrypt.hashSync(req.body.password, salt);
+    updates = { name,email,espec,password:hashPass,about_me }
+  }
+  }
   console.log("updates tiene: ",updates)
   
   User.findByIdAndUpdate(userId, updates, {new: true, runValidators: true})

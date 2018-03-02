@@ -18,7 +18,7 @@ const app = express();
 
 mongoose.connect(dbURL)
         .then(()=> console.log("Connected to DB"))
-        .catch(e => console.error(e));
+        .catch(e => console.error(  e));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -55,8 +55,14 @@ app.use(session({
 
 require('./passport')(app)
 
-app.use('/api/auth', auth);
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  res.locals.title = "Diluvio de Ideas";
+  next();
+});
+
 app.use('/', indexRouter);
+app.use('/api/', auth);
 app.use('/ideas', ideasRouter);
 app.use('/mp', mensajesRouter);
 
@@ -67,11 +73,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-  res.locals.title = "Diluvio de Ideas";
-  next();
-});
+
 
 // error handler
 app.use(function(err, req, res, next) {

@@ -12,7 +12,7 @@ interface User {
 @Injectable()
 export class SessionService {
 
-  BASEURL:string = "http://localhost:3000"
+  BASEURL:string = "http://localhost:3000/api"
   options:object = {withCredentials:true};
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
@@ -41,29 +41,29 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
-  signup(username:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/signup`, {username,password}, this.options)
+  signup(username:string,name:string,espec:string,email:string,about_me:string,password:string,confirm_password:string,avatar:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/signup`, {username,name,espec,email,about_me,password,confirm_password,avatar}, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
 
   login(username:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/login`, {username,password},this.options)
+    return this.http.post(`${this.BASEURL}/login`, {username,password},this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
 
   logout():Observable<any>{
-    return this.http.get(`${this.BASEURL}/api/auth/logout`,this.options)
+    return this.http.get(`${this.BASEURL}/logout`,this.options)
       .map(res => res.json())
       .map(this.configureUser(false))
       .catch(this.handleError);
   }
 
   isLoggedIn():Observable<any> {
-    return this.http.get(`${this.BASEURL}/api/auth/loggedin`,this.options)
+    return this.http.get(`${this.BASEURL}/loggedin`,this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);

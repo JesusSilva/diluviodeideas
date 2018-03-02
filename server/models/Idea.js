@@ -17,7 +17,7 @@ const IdeaSchema = new Schema(
     },
     privacy: {
       type: Boolean,
-      required: true
+      default: true
     },
     status: {
       type: Boolean,
