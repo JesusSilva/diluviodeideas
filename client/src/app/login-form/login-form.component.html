@@ -1,37 +1,25 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md text-center">
+      <h1>ESTE ES EL PUTO LOGIN</h1>
+    </div>
+  </div>
+  <div class="container login-wrapper">
     <div class="row">
-      <div class="col-md text-center">
-        <h1>ESTE ES EL PUTO LOGIN</h1>
+      <div class="col-md-12 text-center">
+        <div *ngIf="!session.getUser()">
+          <form>
+            <input type="text" [(ngModel)]="username" name="username" placeholder="Username" />
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Password" />
+          </form>
+          <button (click)="login()" class="btn btn-warning">Inicia Sesión</button>
+        </div>
       </div>
     </div>
     <div class="row">
-        <div class="col-md-12 text-center">
-            <div *ngIf="!session.getUser()">
-                <form>
-                    <label> Username </label>
-                    <input type="text" [(ngModel)]="username" name="username"/>
-                    <br>
-                    <label> Password </label>
-                    <input type="password" [(ngModel)]="password" name="password"/>
-                </form>
-                <div class="col-md-3 text-center">
-                    <button (click)="login()" class="btn btn-lg btn-primary btn-block"> login </button>
-                </div>
-            </div>
-        </div>
+      <div class="col-md-12 text-center">
+        <p *ngIf="error" class="error"> {{ error }} </p>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 text-center">
-            <p *ngIf="error" class="error"> {{ error }} </p>
-        </div>
-        <div *ngIf="session.getUser()">
-            <pre> {{ session.getUser() | json }} </pre>
-            <button (click)="logout()"> Logout </button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-            <button type="submit" [routerLink]="['/']" class="btn btn-lg btn-primary btn-block">Inicio</button>
-        </div>
-    </div>
+  </div>
 </div>

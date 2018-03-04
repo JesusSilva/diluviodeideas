@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let idea of ideasList" class="col-md-12 idea">
+      <div class="col-md-2">
+        <img src="{{idea.user_id.avatar}}" alt="Avatar" class="avatar">
+        <div class="">{{idea.user_id.name}}</div>
+        <div>Rate</div>
+      </div>
+      <div class="col-md-10">
+        <div class=""><a [routerLink]="['/ideas', idea._id]">{{idea.title}}</a> - {{idea._id}}</div>
+        <div class="">{{idea.mensaje}}</div>
+        <div class="">{{idea.mensaje}}</div>
+      </div>
+    </div>
+  </div>
+</div>

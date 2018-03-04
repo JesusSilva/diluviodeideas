@@ -18,12 +18,12 @@ export class SessionService {
     this.isLoggedIn().subscribe();
   }
 
-  private user:User;
+  public user:User;
 
   getUser(){
     return this.user;
   }
-  private configureUser(set=false){
+  public configureUser(set=false){
     return (user) => {
       if(set){
         this.user = user;

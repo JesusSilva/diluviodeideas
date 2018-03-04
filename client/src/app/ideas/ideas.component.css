@@ -1,0 +1,14 @@
+.avatar {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.idea{
+    display: inline-flex;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 20px;
+    margin-top: 30px;
+}

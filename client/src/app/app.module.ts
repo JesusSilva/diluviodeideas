@@ -1,14 +1,29 @@
+//-- ANGULAR --//
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { SessionService } from '../services/session.service';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { HomeComponent } from './home/home.component';
 import { routes } from './routes';
+
+//-- SERVICIOS --//
+import { SessionService } from '../services/session.service';
+import { UserService } from '../services/user.service';
+import { ProfileService } from '../services/profile.service';
+import { IdeasService } from '../services/ideas.service';
+
+//-- COMPONENTES --//
+import { AppComponent } from './app.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { HomeComponent } from './home/home.component';
+import { IdeasComponent } from './ideas/ideas.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MensajesComponent } from './mensajes/mensajes.component';
+import { AdminComponent } from './admin/admin.component';
+import { SearchComponent } from './search/search.component';
+import { NewideaComponent } from './newidea/newidea.component';
+import { IdeasingleComponent } from './ideasingle/ideasingle.component';
 
 
 @NgModule({
@@ -16,7 +31,14 @@ import { routes } from './routes';
     AppComponent,
     LoginFormComponent,
     SignupFormComponent,
-    HomeComponent
+    HomeComponent,
+    IdeasComponent,
+    ProfileComponent,
+    MensajesComponent,
+    AdminComponent,
+    SearchComponent,
+    NewideaComponent,
+    IdeasingleComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +47,7 @@ import { routes } from './routes';
     RouterModule.forRoot(routes)
 
   ],
-  providers: [SessionService],
+  providers: [SessionService,IdeasService,ProfileService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

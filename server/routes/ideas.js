@@ -192,6 +192,17 @@ router.get("/delete-response/:question/:answers", (req, res) => {
     .catch(err => { next(err) });
 });
 
+
+router.get("/:id", (req,res,next) => {
+  const idea_id = req.params.id;
+  Idea.findById(idea_id)
+    .then(idea => { 
+      return res
+      .status(200)
+      .json({ idea: idea, message: "Mostrando detalles de la idea" })})
+    .catch(err => { next(err) });
+})
+
 module.exports = router;
 
 // //search

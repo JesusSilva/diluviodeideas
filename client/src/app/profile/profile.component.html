@@ -1,0 +1,24 @@
+<h1>hola mundo</h1>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let profile of profileList" class="col-md-12 profile">
+      <div class="col-md-2">
+        <img src="{{profile.avatar}}" alt="Avatar" class="avatar">
+        <div class="">{{profile.name}}</div>
+        <div></div>
+      </div>
+      <div class="col-md-10">
+        <div class="">{{profile.email}}</div>
+        <div class="">{{profile.espec}}</div>
+        <div class="">{{profile.about_me}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<hr> {{user.name}}
+<div *ngIf="user">
+  <h1>Su puto perfil - {{user.username}}</h1>
+  <h3>{{user.name}}</h3>
+  <img src="{{user.avatar}}" alt="" width="10%">
+</div>

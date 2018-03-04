@@ -21,7 +21,7 @@ export class LoginFormComponent implements OnInit {
     this.session.login(this.username, this.password)
       .subscribe(
       (user) => { console.log(user);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/ideas']);
       },
       (err) => this.error = err
       );
