@@ -1,0 +1,8 @@
+.centrado {
+    border: 1px solid gray;
+    border-radius: 3px;
+}
+
+.container {
+    max-width: 800px;
+}

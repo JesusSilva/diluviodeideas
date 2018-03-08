@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Colaboracion = require('../models/Colaboracion');
+const Idea = require('../models/Idea');
 const bcrypt = require('bcrypt');
 const debug = require('debug')("server:auth");
 const passport = require('passport')
@@ -57,9 +59,20 @@ router.post('/login', (req, res, next) => {
 
 router.get('/profile/:id', (req, res, next) => {
   const userId = req.params.id;
+  
   User.findOne({ _id: userId })
-    .then(user => res.status(200).json({message: 'Mostrando profile', user:user}))
-    .catch(e => res.status(500).json({ message: 'Imposible mostrar el perfil' }));
+  .populate({ 
+    path: 'ideas',
+    populate: {
+      path: 'pending',
+      model: 'Colaboracion',
+      populate:{
+        path: 'author colaborador idea_id'
+      } 
+  }})
+  .populate('response')
+  .then(user => res.status(200).json({message: 'Mostrando profile', user:user}))
+  .catch(e => res.status(500).json({ message: 'Imposible mostrar el perfil' }));
 });
 
 router.get('/edit/:id', (req, res, next) => {
@@ -69,7 +82,8 @@ router.get('/edit/:id', (req, res, next) => {
     .catch(e => res.status(500).json({ message: 'Imposible mostrar el perfil' }));
 });
 
-router.post('/edit/:id', (req, res, next) => {
+router.put('/profile/edit/:id', (req, res, next) => {
+  console.log("entro en el back")
   const userId = req.params.id
   const {name,email,espec,password,confirm_password,about_me,avatar} = req.body;
   const salt = bcrypt.genSaltSync(10);
@@ -92,11 +106,11 @@ router.post('/edit/:id', (req, res, next) => {
   }
   }
   console.log("updates tiene: ",updates)
-  
+  console.log("entro en el back")
   User.findByIdAndUpdate(userId, updates, {new: true, runValidators: true})
     .then(user => {
       console.log("ESTE ES EL USER: ", user)
-      res.status(200).json({ message: 'Perfil editado correctamente' });
+      res.status(200).json({ user});
     })
     .catch(err => next(err));
 });

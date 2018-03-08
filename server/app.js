@@ -13,8 +13,14 @@ const auth = require('./routes/auth');
 const indexRouter = require('./routes/index')
 const ideasRouter = require('./routes/ideas')
 const mensajesRouter = require('./routes/mensajes')
+const accionesRouter = require('./routes/acciones')
 
 const app = express();
+
+app.use(function(req, res, next) {
+  req.headers['if-none-match'] = 'no-match-for-this';
+  next();    
+});
 
 mongoose.connect(dbURL)
         .then(()=> console.log("Connected to DB"))
@@ -62,9 +68,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/api/', auth);
+app.use('/api', auth);
 app.use('/ideas', ideasRouter);
 app.use('/mp', mensajesRouter);
+app.use('/acciones', accionesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

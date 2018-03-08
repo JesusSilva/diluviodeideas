@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.wrapper {
+  margin: 100px;
+}
+
+.sombra {
+  -webkit-box-shadow: 14px 16px 40px 3px rgba(138, 138, 138, 0.59);
+  -moz-box-shadow: 14px 16px 40px 3px rgba(138, 138, 138, 0.59);
+  box-shadow: 14px 16px 40px 3px rgba(138, 138, 138, 0.59);
+}

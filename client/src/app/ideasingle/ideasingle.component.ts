@@ -11,21 +11,24 @@ import { IdeasService } from '../../services/ideas.service'
 export class IdeasingleComponent implements OnInit {
   idea:object;
   IdeasList: Array<any>;
+  id:any;
   constructor(private iS:IdeasService,private route: ActivatedRoute) {
-    this.iS.getSingleIdea(['id']).subscribe( idea => this.idea = idea ) 
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      this.getIdeaDetails(params['id']);
-    })
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.getIdeaDetails()
   }
 
-  getIdeaDetails(id) {
-    this.iS.getSingleIdea(id)
+  getIdeaDetails() {
+    this.iS.getSingleIdea(this.id)
     .subscribe((idea) => {
-        this.idea = idea;
+      console.log(idea)
+        this.getIdea(idea)
     })
   }
 
+  getIdea(idea){
+    return this.idea=idea;
+  }
 }

@@ -1,0 +1,40 @@
+<div class="container new-idea wrapper" *ngIf="idea">
+
+  <form>
+    <div class="form-group">
+      <label for="title">Titulo</label>
+      <input type="text" class="form-control" name="title" id="title" placeholder="Introduce Título" [(ngModel)]="idea.title" value="{{idea.title}}" disabled>
+    </div>
+    <div class="form-group">
+      <label for="idea">Desarrolla tu Idea</label>
+      <textarea class="form-control" name="mensaje" id="idea" rows="3" [(ngModel)]="idea.mensaje" value="{{idea.idea}}"></textarea>
+    </div>
+    <!-- <div class="form-group">
+      <label for="imagen">Sube un boceto de tu idea</label>
+      <input type="file" name="imagen" class="form-control-file" id="imagen" [(ngModel)]="idea.imagen" value="{{idea.imagen}}">
+    </div>
+    <fieldset class="form-group">
+      <legend>Privacidad</legend>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="public" [(ngModel)]="idea.privacy"
+            checked> Pública
+        </label>
+      </div>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="private" [(ngModel)]="idea.privacy"> Privada
+        </label>
+      </div>
+      <div class="form-check">
+        <legend>Colaboraciones</legend>
+        <label class="form-check-label">
+          <input type="checkbox" name="colaborar" class="form-check-input" [(ngModel)]="idea.colaborate"> Colaborar
+        </label>
+      </div>
+    </fieldset> -->
+    <div class="text-right">
+      <button type="submit" value="Edita tu idea" name="submit" class="btn btn-primary" (click)="edit(idea)">Edita tu idea</button>
+    </div>  
+  </form>
+</div>

@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ReportSchema = new Schema(
+const ColaboracionSchema = new Schema(
   {
-    colaboracion: {
-      type: Boolean,
-      required: true
+    idea_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Idea"
     },
     status: {
       type: Boolean,
-      default: true
+      default: false
     },
-    emisor: {
+    colaborador: {
       type: Schema.Types.ObjectId,
       ref: "User"
     },
@@ -28,5 +28,5 @@ const ReportSchema = new Schema(
   }
 );
 
-const Report = mongoose.model("Report", ReportSchema);
-module.exports = Report;
+const Colaboracion = mongoose.model("Colaboracion", ColaboracionSchema);
+module.exports = Colaboracion;

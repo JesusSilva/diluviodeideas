@@ -1,0 +1,14 @@
+<div *ngIf="arrayResponses">
+  <div *ngFor="let response of arrayResponses">
+    {{response}} - <a [routerLink]="['/edit-response']">Edit</a>
+    <hr>
+  </div>
+  
+  <form>
+    <div class="form-group">
+      <label for="idea">Gota tras gota se forma el diluvio!</label>
+      <textarea class="form-control" name="response" id="idea" rows="3" [(ngModel)]="response" value="{{response}}"></textarea>
+    </div>
+    <button type="submit" value="Edita tu idea" name="submit" class="btn btn-primary" (click)="newResponse(response)">Aportar tu gota</button>
+  </form>
+</div>

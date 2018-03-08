@@ -9,15 +9,14 @@ const UserSchema = new Schema(
     },
     name: {
       type: String,
-      required: true
+      // required: true
     },
     email: {
       type: String,
-      required: true
+      // required: true
     },
     espec: {
       type: String,
-      required: true
     },
     password: {
       type: String,
@@ -28,7 +27,7 @@ const UserSchema = new Schema(
     },
     avatar: {
       type: String,
-      default:"https://placeholdit.imgix.net/~text?txtsize=50&txt=Avatar&w=250&h=250"
+      default:"https://statics.cuantocabron.com/images_common/trofeos/cuantocabron.png"
     },
     role: {
       type: String,
@@ -43,6 +42,18 @@ const UserSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: "Idea"
+      }
+    ],
+    response: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Response"
+      }
+    ],
+    favs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Favoritos"
       }
     ]
   },

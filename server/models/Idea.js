@@ -17,7 +17,7 @@ const IdeaSchema = new Schema(
     },
     privacy: {
       type: Boolean,
-      default: true
+      default: false
     },
     status: {
       type: Boolean,
@@ -26,13 +26,13 @@ const IdeaSchema = new Schema(
     join: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Colaboracion"
       }
     ],
     pending: [
       {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Colaboracion"
       }
     ],
     rate: {

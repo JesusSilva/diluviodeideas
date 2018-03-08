@@ -9,14 +9,14 @@ import 'rxjs/add/operator/catch';
 export class UserService {
 
     BASEURL:string = "http://localhost:3000"
-    // options:object = {withCredentials:true};
+    options:object = {withCredentials:true};
 
 constructor(private http: Http){
 }
 
 get(id){
-    return this.http.get(`${this.BASEURL}/api/profile/${id}`)
-    .map((res) => res.json());
+    return this.http.get(`${this.BASEURL}/api/profile/${id}`,this.options)
+    .map((res) => res.json().user);
 }
 
 

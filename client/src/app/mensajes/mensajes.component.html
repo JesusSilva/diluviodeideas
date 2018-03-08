@@ -1,3 +1,17 @@
-<p>
-  mensajes works!
-</p>
+<div class="container">
+    <app-new-message></app-new-message>
+</div><hr>
+
+<div *ngIf='mensajes'>
+    <div *ngFor="let mensaje of mensajes">
+        <div class="row mensajes">
+            <div class="col-md-12">
+                <div>{{mensaje.asunto}}</div>
+                <div>De: {{mensaje.emisor.name}}</div>
+                <div>Para: {{mensaje.receptor.name}}</div>
+                <div>{{mensaje.contenido}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+

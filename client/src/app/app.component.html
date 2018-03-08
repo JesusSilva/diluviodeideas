@@ -1,49 +1,55 @@
-<header>
-  <div class="menu_bar">
-    <a [routerLink]="['']" class="bt-menu">
-      <span class="icon-list2"></span>Menu</a>
-  </div>
+<div><img src="https://i.imgur.com/azavdOW.png" class="logo" alt=""></div>
 
-  <nav>
-    <ul>
-      <li *ngIf="session.getUser()">
-        <a (click)="logout()">
-          <span class=""></span>Logout</a>
-      </li>
-      <li *ngIf="!session.getUser()">
-        <a [routerLink]="['/signup']">
-          <span class=""></span>Signup</a>
-      </li>
-      <li *ngIf="!session.getUser()">
-        <a [routerLink]="['/login']">
-          <span class=""></span>Login</a>
-      </li>
-      <li *ngIf="session.getUser()">
-          <a [routerLink]="['profile', session.getUser()._id]">
-            <span class=""></span>Perfil</a>
-      </li>
-      <li *ngIf="session.getUser()">
-        <a [routerLink]="['/mensajes']">
-          <span class=""></span>Mensajes</a>
-      </li>
-      <!-- <li *ngIf="session.getUser()">
-        <a [routerLink]="['/new']">
-          <span class=""></span>Nueva idea</a>
-      </li> -->
+<div class="open">
+  <span class="cls"></span>
+  <span>
+    <ul class="sub-menu ">
       <li>
-        <a [routerLink]="['/contact']">
-          <span class=""></span> Contacto</a>
+        <a [routerLink]="['']">
+          <span class=""></span>Inicio</a>
       </li>
       <li>
         <a [routerLink]="['/ideas']">
           <span class=""></span>Ideas</a>
       </li>
-      <li>
-        <a [routerLink]="['']">
-          <span class=""></span>Inicio</a>
+      <li *ngIf="session.getUser()">
+        <a [routerLink]="['/mensajes']">
+          <span class=""></span>Mensajes</a>
+      </li>
+      <li *ngIf="!session.getUser()">
+        <a [routerLink]="['/access']">
+          <span class=""></span>Access</a>
+      </li>
+      <li *ngIf="session.getUser()">
+        <a [routerLink]="['profile',session.getUser()._id]">
+          <span class=""></span>Perfil</a>
+      </li>
+      <li *ngIf="session.getUser()">
+        <a (click)="logout()">
+          <span class=""></span>Logout</a>
       </li>
     </ul>
-  </nav>
-</header>
+  </span>
+  <span class="cls"></span>
+</div>
+
+<div *ngIf="session.getUser()">
+  <div id="container-floating">
+    <div class="nd4 nds" [routerLink]="['profile',session.getUser()._id]">
+      <i class="far fa-user-circle"></i>
+    </div>
+    <div class="nd3 nds" [routerLink]="['/mensajes']">
+      <i class="far fa-envelope"></i>
+    </div>
+    <div class="nd1 nds" [routerLink]="['/new-idea']">
+      <i class="far fa-lightbulb"></i>
+    </div>
+    <div id="floating-button">
+      <p class="plus">+</p>
+      <i class="edit fas fa-pencil-alt"></i>
+    </div>
+  </div>
+  
+</div>
 
 <router-outlet></router-outlet>

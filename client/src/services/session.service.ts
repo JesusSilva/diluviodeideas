@@ -41,8 +41,8 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
-  signup(username:string,name:string,espec:string,email:string,about_me:string,password:string,confirm_password:string,avatar:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/signup`, {username,name,espec,email,about_me,password,confirm_password,avatar}, this.options)
+  signup(username:string,password:string,confirm_password:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/signup`, {username,password,confirm_password}, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);

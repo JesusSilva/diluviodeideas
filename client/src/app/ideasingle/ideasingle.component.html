@@ -1,16 +1,20 @@
-<h1>Detalles de la idea</h1>
-<div class="container">
+<div *ngIf="idea" class="wrapper">
+  <div class="container">
     <div class="row">
-      {{idea.title}}
-        <!-- <div class="col-md-2">
-          <img src="{{idea.user_id.avatar}}" alt="Avatar" class="avatar">
-          <div class="">{{idea.user_id.name}}</div>
-          <div>Rate</div>
-        </div> -->
-        <div class="col-md-10">
-          <div class=""><a [routerLink]="['/ideas']">{{idea.title}}</a> - {{idea._id}}</div>
-          <div class="">{{idea.mensaje}}</div>
-          <div class="">{{idea.mensaje}}</div>
-        </div>
+      <div class="col-md-10">
+        <div class="">{{idea.title}} - {{idea._id}}</div>
+        <div class="">{{idea.mensaje}}</div>
+        <div class="">{{idea.mensaje}}</div>
+      </div>
     </div>
+    <div class="text-right">
+      <input type="submit" value="Editar" class="btn btn-warning" [routerLink]="['/edit-idea', idea._id]">
+    </div>
+    <hr>
+    <div *ngFor="let response of idea.response_id">
+      <div>{{response.mensaje}} - <a [routerLink]="['/edit-response', response._id]">Edit</a></div>
+      <hr>
+    </div>
+    <app-new-response></app-new-response>
   </div>
+</div>
