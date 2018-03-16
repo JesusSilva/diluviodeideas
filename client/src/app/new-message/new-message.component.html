@@ -2,15 +2,15 @@
   <form>
     <div class="form-group">
       <label for="asunto">Asunto</label>
-      <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Introduce el asunto" [(ngModel)]="asunto">
+      <input type="text" class="form-control" name="asunto" id="asunto" placeholder="Introduce el asunto" [(ngModel)]="asunto" value="{{mensaje.asunto}}">
     </div>
     <div class="form-group">
       <label for="receptorUsername">Destinatario</label>
-      <input type="text" class="form-control" name="receptorUsername" id="receptorUsername" placeholder="Introduce el destinatario" [(ngModel)]="receptorUsername">
+      <input type="text" class="form-control" name="receptorUsername" id="receptorUsername" placeholder="Introduce el destinatario" [(ngModel)]="receptorUsername" value="{{mensaje.asunto}}">
     </div>
     <div class="form-group">
       <label for="idea">Escribe tu mensaje</label>
-      <textarea class="form-control" name="contenido" id="idea" rows="3" [(ngModel)]="contenido"></textarea>
+      <textarea class="form-control" name="contenido" id="idea" rows="3" [(ngModel)]="contenido" value="{{mensaje.asunto}}"></textarea>
     </div>
     <button type="submit" class="btn btn-primary" (click)="newMensaje(asunto,receptorUsername,contenido)">Enviar MP</button>
   </form>

@@ -1,7 +1,7 @@
 <div *ngIf="user">
-  <div class="container centrado wrapper">
-    <div class="row">
-      <div class="col-md-12">
+  <div class="container">
+    <div class="row centrado wrapper sombra">
+      <div class="col-md-12" style="margin-bottom:50px">
         <form class="form-horizontal">
           <fieldset>
             <!-- Form Name -->
@@ -9,8 +9,8 @@
         
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="username">Username</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="username">Username</label>
+              <div class="col-md-12">
                 <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" value="{{user.username}}" [(ngModel)]="user.username">
         
               </div>
@@ -18,8 +18,8 @@
         
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="name">Nombre y Apellidos</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="name">Nombre y Apellidos</label>
+              <div class="col-md-12">
                 <input id="name" name="name" type="text" placeholder="Nombre y Apellidos" class="form-control input-md" value="{{user.name}}" [(ngModel)]="user.name">
         
               </div>
@@ -27,25 +27,25 @@
         
             <!-- Text input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="email">Correo electrónico</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="email">Correo electrónico</label>
+              <div class="col-md-12">
                 <input id="email" name="email" type="text" placeholder="Correo electrónico" class="form-control input-md" value="{{user.email}}" [(ngModel)]="user.email">
         
               </div>
             </div>
         
-            <!-- File Button -->
+            <!-- File Button
             <div class="form-group">
-              <label class="col-md-4 control-label" for="avatar">Avatar</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="avatar">Avatar</label>
+              <div class="col-md-12">
                 <input id="avatar" name="avatar" class="input-file" type="file">
               </div>
-            </div>
+            </div> -->
         
             <!-- Password input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="password">Contraseña</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="password">Contraseña</label>
+              <div class="col-md-12">
                 <input id="password" name="password" type="password" placeholder="Contraseña" class="form-control input-md" [(ngModel)]="user.password" value="">
         
               </div>
@@ -53,8 +53,8 @@
         
             <!-- Password input-->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="confirm_password">Confirma contraseña</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="confirm_password">Confirma contraseña</label>
+              <div class="col-md-12">
                 <input id="confirm_password" name="confirm_password" type="password" placeholder="Confirma la contraseña" class="form-control input-md" [(ngModel)]="user.confirm_password">
         
               </div>
@@ -62,8 +62,8 @@
         
             <!-- Select Basic -->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="espec">Especialidad</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="espec">Especialidad</label>
+              <div class="col-md-12">
                 <select id="espec" name="espec" class="form-control" value="{{user.espec}}" [(ngModel)]="user.espec">
                   <option value="web">WEB</option>
                   <option value="ux">UX / UI</option>
@@ -73,16 +73,16 @@
         
             <!-- Textarea -->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="about_me">Sobre ti...</label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="about_me">Sobre ti...</label>
+              <div class="col-md-12">
                 <textarea class="form-control" id="about_me" name="about_me" [(ngModel)]="user.about_me">{{user.about_me}}</textarea>
               </div>
             </div>
         
             <!-- Button -->
             <div class="form-group">
-              <label class="col-md-4 control-label" for="submit"></label>
-              <div class="col-md-4">
+              <label class="col-md-12 control-label" for="submit"></label>
+              <div class="col-md-12">
                 <button id="submit" name="submit" (click)="edit(user)" class="btn btn-success">Quiero cambiar mis datos!</button>
               </div>
             </div>

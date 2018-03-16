@@ -1,15 +1,29 @@
 <div class="container">
     <app-new-message></app-new-message>
-</div><hr>
+</div>
 
-<div *ngIf='mensajes'>
+    <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseEntrada" aria-expanded="false" aria-controls="collapseEntrada">Button with data-target</button>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSalida" aria-expanded="false" aria-controls="collapseSalida">Button with data-target</button>
+  
+  <div class="collapse" id="collapseEntrada">
+    <div class="card card-body">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
+  <div class="collapse" id="collapseSalida">
+    <div class="card card-body">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, mollitia quibusdam culpa maiores a maxime, doloremque et cumque impedit beatae repudiandae corrupti in dolores reiciendis architecto porro sapiente quam voluptatum.
+    </div>
+  </div> -->
+
+<div *ngIf='mensajes' class="wrapper">
     <div *ngFor="let mensaje of mensajes">
-        <div class="row mensajes">
-            <div class="col-md-12">
-                <div>{{mensaje.asunto}}</div>
-                <div>De: {{mensaje.emisor.name}}</div>
-                <div>Para: {{mensaje.receptor.name}}</div>
-                <div>{{mensaje.contenido}}</div>
+        <div class="row mensajes sombra">
+            <div class="col-md-12" style="padding: 25px;">
+                <div><b>Asunto:</b> {{mensaje.asunto}}</div>
+                <div><b>De:</b> {{mensaje.emisor.name}}</div>
+                <div><b>Para:</b> {{mensaje.receptor.name}}</div>
+                <div><b>Mensaje:</b> {{mensaje.contenido}}</div>
             </div>
         </div>
     </div>

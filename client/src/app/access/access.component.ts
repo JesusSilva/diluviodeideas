@@ -38,7 +38,7 @@ export class AccessComponent implements OnInit {
     this.session.login(username,password)
       .subscribe(
       (user) => { console.log(user);
-        this.router.navigate(['/ideas']);
+        this.router.navigate(['/']);
       },
       (err) => this.error = err
       );

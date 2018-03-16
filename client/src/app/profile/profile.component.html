@@ -1,25 +1,31 @@
 <div class="wrapper">
   <div *ngIf="user">
-    <h1>Su puto perfil - {{user.username}}</h1>
-    <h3>{{user.name}}</h3>
-    <img src="{{user.avatar}}" alt="" width="10%">
-    <input type="submit" value="Editar perfil" [routerLink]="['/profile/edit', user._id]">
+    <div class="row">
+      <div class="col-md-3">
+        <img src="{{user.avatar}}" alt="avatar" class="img-fluid">
+      </div>
+      <div class="col-md-9">
+        <h3>{{user.name}}</h3>
+        <h1>@{{user.username}}</h1>
+        <p>{{user.about_me}}</p>
+
+      </div>
+    </div>
+    <div class="text-center">
+      <input type="submit" value="Editar perfil" [routerLink]="['/profile/edit', user._id]" class="btn btn-warning">
+    </div>
   </div>
   <hr>
   <br>
   <div class="ideas" *ngFor="let idea of ideasList">
-    <div>{{idea.title}}</div>
-    <div>{{idea.mensaje}}</div>
+    <div><a [routerLink]="['/detail-idea', idea._id]">{{idea.title}}</a></div>
   </div><br><br><hr>
   <div class="response" *ngFor="let response of responseList">
     <div>{{response.mensaje}}</div>
   </div><br><br><hr>
   <div class="colaboraciones" *ngFor="let colaboraciones of ideasList">
-    <!-- <div>El usuario {{colaboraciones.pending.colaborador}}</div> -->
-    <div *ngFor="let colaboraciones of colaboraciones.pending">
-      El usuario <b><a [routerLink]="['/profile', colaboraciones.colaborador._id]">{{colaboraciones.colaborador.name}}</a></b> quiere colaborar contigo en <b><a [routerLink]="['/detail-idea', colaboraciones.idea_id._id]">{{colaboraciones.idea_id.title}}</a></b>  
-      <a (click)="aceptarColaboracion(colaboraciones._id)"><i class="fas fa-check"></i></a> | <a (click)="declinarColaboracion(colaboraciones._id)"><i class="fas fa-times"></i></a>
-    </div>
+    <div *ngFor="let pending of colaboracionesPending">
+      El usuario <b><a [routerLink]="['/profile', pending.colaborador._id]">{{pending.author.name}}</a></b> quiere participar en <b><a [routerLink]="['/detail-idea', pending.idea_id._id]">{{pending.idea_id.title}}</a></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      <a (click)="aceptarColaboracion(pending._id)"><i class="fas fa-check"></i></a> | <a (click)="declinarColaboracion(pending._id)"><i class="fas fa-times"></i></a></div>
   </div>
-  <div *ngFor="let pending of colaboracionesPending">El usuario <b>{{pending.author.name}}</b> quiere participar en <b>{{pending.idea_id.title}}</b></div>
 </div>

@@ -1,24 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; 
-import { SessionService } from '../../services/session.service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { SessionService } from "../../services/session.service";
+declare var jQuery:any;
+declare var $:any;
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: "app-home",
+  templateUrl: "./home.component.html",
+  styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  error:string;
-  
-  constructor(public session:SessionService, private router: Router) { }
+  error: string;
 
-  ngOnInit() {
-    
-  }
+  constructor(public session: SessionService, private router: Router) {}
 
-  logout(){
-    this.session.logout()
-    .catch(e => this.error = e)
-    .subscribe();
+  ngOnInit() {}
+
+  logout() {
+    this.session
+      .logout()
+      .catch(e => (this.error = e))
+      .subscribe();
   }
 }

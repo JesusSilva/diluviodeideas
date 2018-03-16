@@ -5,14 +5,22 @@
   margin-bottom: 10px;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .idea {
   display: inline-flex;
-  padding: 20px;
+  padding: 40px 20px;
   margin-top: 30px;
 }
 
-.fav {
-  margin-top: 30px;
+.boton-fix {
+  margin-bottom: 38px;
+}
+
+.m-bottom{
+  margin-bottom: 30px;
 }
 
 .fav {

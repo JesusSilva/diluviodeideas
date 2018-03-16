@@ -41,6 +41,9 @@ router.post("/colaborar/:id", (req, res, next) => {
 	Idea.findById(idea_id)
 	.populate('user_id')
 	.then(idea => {
+		console.log("====================================================================")
+		console.log("la idea entera es: " + idea);
+		console.log("====================================================================")
 		ideaTitle = idea.title;
 		author = idea.user_id._id;
 		authorMail = idea.user_id.email;

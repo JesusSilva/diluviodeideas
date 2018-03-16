@@ -32,6 +32,7 @@ export class ProfileComponent implements OnInit {
         this.colaboracionesList = user.ideas;
         this.colaboracionesPending = this.user.ideas[0].pending
         this.colaboracionesJoin
+        console.log(user)
       })
     })
   }
@@ -39,7 +40,7 @@ export class ProfileComponent implements OnInit {
 
   declinarColaboracion(id){
     console.log("declinar")
-    this.colaboracionesPending = [...this.colaboracionesPending.pop(id)]
+    this.colaboracionesPending.pop(id)
     this.pS.eliminarColabo(id).subscribe(
       (r) => { 
         this.router.navigate(['/']);

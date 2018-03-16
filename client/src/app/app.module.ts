@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes';
+import { ParticlesModule } from 'angular-particle';
 
 //-- SERVICIOS --//
 import { SessionService } from '../services/session.service';
@@ -54,8 +55,8 @@ import { EditResponseComponent } from './edit-response/edit-response.component';
     BrowserModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(routes)
-
+    RouterModule.forRoot(routes),
+    ParticlesModule
   ],
   providers: [SessionService,IdeasService,ResponsesService,ProfileService,UserService,MensajesService],
   bootstrap: [AppComponent]

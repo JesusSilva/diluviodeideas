@@ -29,7 +29,12 @@ h1 {
 .logo {
 	width: auto;
 	height: 70px;
-	margin: 33px
+  margin: 33px;
+}
+
+.fixed {
+  position: absolute;
+  z-index: 1000;
 }
 
 .open {
@@ -54,7 +59,7 @@ h1 {
   height: 4px;
   width: 40px;
   border-radius: 40px;
-  background-color: #000;
+  background-color: #38271b;
   position: absolute;
   right: 3px;
   top: 3px;
@@ -113,7 +118,7 @@ h1 {
   -webkit-transition-delay: 0.25s;
 }
 .sub-menu li a {
-  color: #fff;
+  color: #3B3731;
   font-family: "Lato", Arial, Helvetica, sans-serif;
   font-size: 16px;
   width: 100%;
@@ -146,7 +151,7 @@ h1 {
   right: -160px;
   top: -160px;
   border-radius: 50%;
-  background-color: #ed2553;
+  background-color: #f2ca30;
 }
 .oppenned span:nth-child(3) {
   -webkit-transform: rotate(-45deg) translateY(-10px) translateX(10px);
@@ -218,7 +223,7 @@ h1 {
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: #ed2553;
+  background: #f2ca30;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -344,7 +349,7 @@ h1 {
 }
 
 .nd1 {
-  background: #ed2553;
+  background: #f2ca30;
   right: 40px;
   bottom: 120px;
   animation-delay: 0.2s;
@@ -356,7 +361,7 @@ h1 {
 }
 
 .nd3 {
-  background: #ed2553;
+  background: #f2ca30;
   right: 40px;
   bottom: 180px;
   animation-delay: 0.15s;
@@ -368,7 +373,7 @@ h1 {
 }
 
 .nd4 {
-  background: #ed2553;
+  background: #f2ca30;
   right: 40px;
   bottom: 240px;
   animation-delay: 0.1s;
