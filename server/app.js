@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 
 mongoose.connect(dbURL)
         .then(()=> console.log("Connected to DB"))
-        .catch(e => console.error(  e));
+        .catch(e => console.error(e));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -14,9 +14,8 @@ export class MensajesService {
 		.get(`${this.BASE_URL}/mp`,this.options)
 		.map(res => res.json().mensajes);
   }
-  
+
   newMensajeService(asunto,receptorUsername,contenido):Observable<any>{
-    console.log("Servicio Mensaje", contenido)
     return this.http.post(`${this.BASE_URL}/mp/salida`, {asunto,receptorUsername,contenido}, this.options)
     .map(res => res.status)
   }

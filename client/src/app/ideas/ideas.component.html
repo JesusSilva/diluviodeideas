@@ -1,19 +1,22 @@
 
 <div class="container wrapper">
-  <div *ngFor="let idea of ideasList">
-    <div class="row idea sombra pointer" [routerLink]="['/detail-idea', idea._id]">
-      <div class="col-md-2">
+  <div *ngFor="let idea of ideasList" class="row idea sombra pather">
+    <div class="col-md-2 fix-padding">
+      <div class="idea-avatar background-green">
         <img src="{{idea.user_id.avatar}}" alt="Avatar" class="avatar">
         <div class="text-center">{{idea.user_id.name}}</div>
       </div>
-      <div class="col-md-10">
-        <div class=""><h3>{{idea.title}}</h3></div>
-        <div class="text-justify m-bottom">{{idea.mensaje}}</div>
-        <div class="col-md-12 text-right fav">
-          <button type="submit" class="btn btn-success boton-fix">Colaborar</button>
-          <div class="fav fav-heart"></div>
-        </div>
+      <div class="background-green__dark">
+        <div class="fav fav-heart"></div>
+        <button type="submit" class="btn btn-naked">Colaborar</button>
       </div>
     </div>
+    <div class="col-md-10 pointer" [routerLink]="['/detail-idea', idea._id]">
+      <div class=""><h3>{{idea.title}}</h3></div>
+      <div class="text-justify max-height-text">{{idea.mensaje}}</div>
+    </div>
   </div>
+</div>
+<div routerLink="/new-idea">
+  <i class="fas fa-plus-circle add-idea"></i>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { IdeasService } from "../../services/ideas.service";
+import { Router } from "@angular/router";
 declare var jQuery: any;
 declare var $: any;
 

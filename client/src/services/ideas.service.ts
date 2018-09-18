@@ -16,21 +16,15 @@ export class IdeasService {
   }
 
   editIdea(id,idea):Observable<any>{
-    console.log("entrooooo al servicio");
-    console.log(id,"id")
-    console.log(idea,"idea")
     return this.http.put(`${this.BASE_URL}/ideas/edit/${id}`, idea, this.options)
     .map(res => res.status)
   }
-  
+
   newIdeaService(idea):Observable<any>{
-    console.log("entrooooo al servicio");
-    console.log("id")
-    console.log(idea,"idea")
     return this.http.post(`${this.BASE_URL}/ideas/new/`, idea, this.options)
     .map(res => res.status)
   }
-  
+
   getIdeaList(): Observable<any> {
     return this.http
       .get(`${this.BASE_URL}/ideas`,this.options)

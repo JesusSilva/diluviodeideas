@@ -1,6 +1,6 @@
 <br>
 <h3 class="text-center">Crea tu idea</h3>
-<hr>
+
 <br>
 
 <div class="container new-idea sombra">
@@ -13,29 +13,6 @@
       <label for="idea">Desarrolla tu Idea</label>
       <textarea class="form-control" name="mensaje" id="idea" rows="3" [(ngModel)]="mensaje"></textarea>
     </div>
-    <!-- <div class="form-group">
-      <label for="imagen">Sube tu avatar</label>
-      <input type="file" class="form-control-file" id="imagen" [(ngModel)]="idea.avatar">
-    </div>
-    <fieldset class="form-group">
-      <legend>Privacidad</legend>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="public" [(ngModel)]="idea.privacy"checked> Pública
-        </label>
-      </div>
-      <div class="form-check">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="private" [(ngModel)]="idea.privacy"> Privada
-        </label>
-      </div>
-      <div class="form-check">
-        <legend>Colaboraciones</legend>
-        <label class="form-check-label">
-          <input type="checkbox" class="form-check-input" [(ngModel)]="idea.colaborate"> Colaborar
-        </label>
-      </div>
-    </fieldset> -->
     <button type="submit" class="btn btn-primary" (click)="newIdea(title,mensaje)">Adelante, reciba feedback!</button>
   </form>
 </div>

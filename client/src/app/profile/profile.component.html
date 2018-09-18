@@ -1,31 +1,54 @@
-<div class="wrapper">
+<div class="container">
+
   <div *ngIf="user">
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row sombra">
+      <div class="col-md-3 profile-avatar">
         <img src="{{user.avatar}}" alt="avatar" class="img-fluid">
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 profile-data">
         <h3>{{user.name}}</h3>
-        <h1>@{{user.username}}</h1>
+        <h4>{{user.email}}</h4>
+        <h5>@{{user.username}}</h5>
         <p>{{user.about_me}}</p>
-
+        <div [routerLink]="['/profile/edit', user._id]" class="profile-edit">
+          <i class="far fa-edit"></i>
+        </div>
       </div>
     </div>
-    <div class="text-center">
-      <input type="submit" value="Editar perfil" [routerLink]="['/profile/edit', user._id]" class="btn btn-warning">
+  </div>
+
+  <div class="profile-section-ideas">
+    <h4>Ideas publicadas</h4>
+    <div class="profile-flex__tags">
+      <div class="ideas sombra" *ngFor="let idea of ideasList">
+        <div class="profile-ideas__tags" [routerLink]="['/detail-idea', idea._id]">
+          <div class="circulo">
+            <i class="far fa-lightbulb "></i>
+          </div>
+          <span>{{idea.title}}</span>
+        </div>
+      </div>
     </div>
   </div>
-  <hr>
-  <br>
-  <div class="ideas" *ngFor="let idea of ideasList">
-    <div><a [routerLink]="['/detail-idea', idea._id]">{{idea.title}}</a></div>
-  </div><br><br><hr>
-  <div class="response" *ngFor="let response of responseList">
-    <div>{{response.mensaje}}</div>
-  </div><br><br><hr>
+
+  <div class="profile-section-response">
+    <h4>Respuestas publicadas</h4>
+    <div class="sombra" *ngFor="let response of responseList">
+      <div class="response">
+        <span>{{response.mensaje}}</span>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- <div class="response" *ngFor="let response of responseList">
+    <div class="">{{response.mensaje}}</div>
+  </div> -->
   <div class="colaboraciones" *ngFor="let colaboraciones of ideasList">
     <div *ngFor="let pending of colaboracionesPending">
-      El usuario <b><a [routerLink]="['/profile', pending.colaborador._id]">{{pending.author.name}}</a></b> quiere participar en <b><a [routerLink]="['/detail-idea', pending.idea_id._id]">{{pending.idea_id.title}}</a></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+      El usuario <b><a [routerLink]="['/profile', pending.colaborador._id]">{{pending.author.name}}</a></b> quiere participar en <b><a [routerLink]="['/detail-idea', pending.idea_id._id]">{{pending.idea_id.title}}</a></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <a (click)="aceptarColaboracion(pending._id)"><i class="fas fa-check"></i></a> | <a (click)="declinarColaboracion(pending._id)"><i class="fas fa-times"></i></a></div>
   </div>
 </div>

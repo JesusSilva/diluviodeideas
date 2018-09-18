@@ -12,14 +12,11 @@ export class ResponsesService {
 
   newResponseService(response, id):Observable<any>{
     const respuesta : Object = response.response
-    console.log("Servicio Respuestra", respuesta)
     return this.http.post(`${this.BASE_URL}/ideas/new-response/${id}`, {respuesta}, this.options)
     .map(res => res.status)
   }
 
   editResponse(id,mensaje):Observable<any>{
-    console.log("ENTRO EN EL SERVICE RESPONSE")
-    console.log(mensaje)
     return this.http.put(`${this.BASE_URL}/ideas/update-response/${id}`, {mensaje}, this.options)
       .map(res => res.status)
   }

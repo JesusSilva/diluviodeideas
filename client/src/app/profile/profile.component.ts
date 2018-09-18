@@ -12,15 +12,15 @@ import { ProfileService } from '../../services/profile.service';
 
 export class ProfileComponent implements OnInit {
 
-  user:any;
-  responseList:any;
-  ideasList:any;
-  error:any;
-  colaboracionesList:any = {} 
-  colaboracionesPending:any
-  colaboracionesJoin:any
-  
-  constructor(private route:ActivatedRoute,public pS:ProfileService,public router:Router) { 
+  user: any;
+  responseList: any;
+  ideasList: any;
+  error: any;
+  colaboracionesList: any = {};
+  colaboracionesPending: any;
+  colaboracionesJoin: any;
+
+  constructor(private route:ActivatedRoute,public pS:ProfileService,public router:Router) {
   }
 
   ngOnInit() {
@@ -30,26 +30,23 @@ export class ProfileComponent implements OnInit {
         this.ideasList = user.ideas;
         this.responseList = user.response;
         this.colaboracionesList = user.ideas;
-        this.colaboracionesPending = this.user.ideas[0].pending
-        this.colaboracionesJoin
-        console.log(user)
-      })
-    })
+        this.colaboracionesPending = this.user.ideas[0].pending;
+        this.colaboracionesJoin;
+      });
+    });
   }
 
 
   declinarColaboracion(id){
-    console.log("declinar")
     this.colaboracionesPending.pop(id)
     this.pS.eliminarColabo(id).subscribe(
-      (r) => { 
+      (r) => {
         this.router.navigate(['/']);
       },
       (err) => this.error = err
       );
   }
   aceptarColaboracion(id){
-    console.log("aceptar")
-    this.pS.aceptarColabo(id)
+    this.pS.aceptarColabo(id);
   }
 }

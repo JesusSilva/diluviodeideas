@@ -18,12 +18,9 @@ export class NewIdeaComponent implements OnInit {
 
   newIdea(title,mensaje){
     this.idea = {title,mensaje}
-    console.log("entro al newIdea del component")
-    console.log(this.idea)
     this.iS
     .newIdeaService(this.idea)
     .subscribe((idea) => {
-      console.log(idea);
       this.router.navigate(['/ideas']);
     });
   }

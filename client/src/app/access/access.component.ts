@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 declare var jQuery: any;
 declare var $: any;
@@ -10,7 +10,7 @@ declare var $: any;
   styleUrls: ["./access.component.css"]
 })
 export class AccessComponent implements OnInit {
-  
+
   username:string;
   password:string;
   error:string;
@@ -37,7 +37,7 @@ export class AccessComponent implements OnInit {
   login(username,password) {
     this.session.login(username,password)
       .subscribe(
-      (user) => { console.log(user);
+      (user) => {
         this.router.navigate(['/']);
       },
       (err) => this.error = err
@@ -47,7 +47,6 @@ export class AccessComponent implements OnInit {
   signup(username,password,confirm_password) {
     this.session.signup(username,password,confirm_password)
       .subscribe(user => {
-        console.log(user);
         this.router.navigate(["/user/access"]);
       }, err => (this.error = err));
   }

@@ -1,0 +1,105 @@
+Configuración de una ruta:
+
+Para configurar una ruta deberemos modificar dos archivos, nuestro app.js y nuestro router.
+En este caso nuestro archivo de rutas le vamos a llamar para el ejemplo, index.js
+
+Pasos para configurar una ruta:
+
+
+DENTRO DE INDEX.JS
+1 - Requerimos express y express.router()
+
+    const express = require("express");
+    const router = express.Router();
+
+2 - Al declarar express.Router(); como router utilizaremos esta variable para indicar nuestras rutas
+    Un ejemplo de ruta sería el siguiente: 
+
+    router.get('/private', isLoggedIn, function(req, res, next) {
+        res.render('private');
+    });
+
+    Como puedes ver utilizo router una vez declarado al principio del fichero, seguido del verbo http
+    en este caso utilizo GET porque lo que quiero es que al meterme en localhost:3000/private me muestre 
+    el template/vista de private. Si quisiera enviar los datos de un formulario por ejemplo sería con el 
+    verbo POST
+
+    Aprovechando que has dado ya autenticación he metido un middleware que se llama isLoggedIn que lo que
+    hace es gestionar la logica para saber si un usuario está logeado o no y devuelve un boolean, 
+    si devuelve true deja acceder a la ruta y si devuelve false deniega el acceso a la ruta, por eso te he
+    puesto el caso de acceder a private porque es una ruta que para acceder tienes que controlar que esté
+    logeado.
+
+3 - Exportar este fichero para que se pueda requerir por asi decirlo desde el app.js 
+
+    Para exportar supongo que ya lo sabrás utilizamos 
+    
+    -> module.exports = router
+
+    Esta linea de código debe de ir al final del fichero. En este caso estoy exportando router porque así
+    lo llamé arriba en la declaración, y aparte porque todos los verbos http los realizas sobre router.
+    Yo lo he llamado así pero lo podrias llamar pepito.
+
+DENTRO DE APP.JS:
+
+1 - Requerimos nuestro fichero router
+
+    -> const indexRouter = require('./routes/index')
+
+    Aqui estamos diciendole que toda la configuracion del router index se va a llamar indexRouter
+
+2 - Configuramos la direccion/ruta de donde va a colgar la configuración de indexRouter
+
+    -> app.use('/', indexRouter);
+
+    Esta linea lo que le dice a express es que toda la configuración del router index va colgar de la ruta padre /
+    
+    Tal y como tenemos configurado el router en este ejemplo la ruta sería la siguiente:
+    localhost:3000/private ya que / la definimos en nuestro app y /private en nuestro fichero index.js
+
+
+==================================================================================================================
+DATO IMPORTANTE
+==================================================================================================================
+
+En nuestro fichero de rutas index.js debemos hacer todas las peticiones a la direccion /nombre_de_la_ruta, aunque 
+parezca redundante el poner otra barra, se tiene que poner, si solo fuera barra llamarias al directorio raiz.
+
+Esto si vas a usar el directorio padre / que seria directamente localhost:3000 que ha sido el ejemplo que yo te he puesto
+
+
+==================================================================================================================
+EJEMPLO CON AUTENTICACIÓN
+==================================================================================================================
+
+DENTRO DE APP.JS
+
+1 - Requerimos el router y asignamos el directorio padre con app.use
+
+    -> const authRouter = require('./routes/auth.js')
+    -> app.use('/auth', indexRouter)
+
+DENTRO DE AUTH.JS
+
+1 - Requerimos express y express.router, definimos la ruta y exportamos
+
+    ->const express = require("express");
+    ->const router = express.Router();
+    
+    router.get('/login', function(req, res, next) {
+        res.render('login');
+    });
+
+    -> module.exports = router
+
+En este caso nuestra ruta de login sería localhost:3000/auth/login
+/auth la definimos en el app.js
+/login la definimos en auth.js
+
+Si quisieramos acceder solo a la ruta auth tendriamos que poner / en vez de /login
+/login complementa al directorio raiz/padre /auth especificando asi que dentro de /auth
+tiene que acceder a /login 
+
+
+en cuanto a function(req, res, next) lo que estas pasandole son los parametros request, response y next para que
+dentro de la ruta tu decidas que hacer con cada parametro.

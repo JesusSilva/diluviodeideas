@@ -1,18 +1,18 @@
 <div *ngIf="idea" class="wrapper">
   <div class="container">
-    <div class="row">
-      <div class="col-md-10">
+    <div class="row sombra">
+      <div class="col-md-2 padding-40px detail-idea-avatar display-flex__center">
+        <img src="https://media.licdn.com/dms/image/C5603AQFhYbKDddw_nA/profile-displayphoto-shrink_200_200/0?e=1538611200&v=beta&t=Qd86bosrurPhcQAvdFvS-uq6qGZxbZi26jI2_4r8THc" alt="" class="avatar">
+        <input type="submit" value="Editar" class="btn btn-edit" [routerLink]="['/edit-idea', idea._id]">
+      </div>
+      <div class="col-md-10 padding-40px detail-idea-idea">
         <div class=""><h3>{{idea.title}}</h3></div>
         <div class="text-justify">{{idea.mensaje}}</div>
       </div>
     </div>
-    <div class="text-right">
-      <input type="submit" value="Editar" class="btn btn-warning" [routerLink]="['/edit-idea', idea._id]">
-    </div>
-    <hr>
-    <div *ngFor="let response of idea.response_id">
-      <div>{{response.mensaje}} - <a [routerLink]="['/edit-response', response._id]">Edit</a></div>
-      <hr>
+    <div *ngFor="let response of idea.response_id" class="response sombra">
+      <img src="https://media.licdn.com/dms/image/C5603AQFhYbKDddw_nA/profile-displayphoto-shrink_200_200/0?e=1538611200&v=beta&t=Qd86bosrurPhcQAvdFvS-uq6qGZxbZi26jI2_4r8THc" alt="" class="avatar">
+      <div>{{response.mensaje}} <a [routerLink]="['/edit-response', response._id]"><i class="fas fa-pencil-alt edit"></i></a></div>
     </div>
     <app-new-response></app-new-response>
   </div>

@@ -57,7 +57,6 @@ router.post("/new", upload.single("imagen"), (req, res, next) => {
       const newIdea = new Idea(updates);
       newIdea.save()
       .then(idea => {
-        console.log("El id de tu idea es = ",idea)
         User.findByIdAndUpdate(user_id,{ $push: { ideas: idea._id } },{new: true})
         .then(idea => {
           return res.status(200).json({ message: "joputa has añadido una respuesta al array del user", idea:idea })
@@ -141,26 +140,12 @@ router.post("/new-response/:id", (req, res, next) => {
 router.put("/update-response/:id", (req, res, next) => {
   const responseId = req.params.id;
   const mensaje = req.body.mensaje;
-  console.log("Este es tu puto mensaje: ",mensaje);
-  console.log("Este es tu puto id de la respuesta: ",responseId);
   Response.findByIdAndUpdate(responseId, {mensaje})
     .then(r => res
       .status(200)
       .json({ res })
       .catch(err => next(err)))
 });
-
-
-// //search
-// router.get('/search/:term', (req, res, next) => {
-//   let term = req.params.term;
-//   console.log(term)
-//   let rg = new RegExp(term, 'i');
-//   Ticket.find({ description: rg }).then(results => {
-//       console.log(results)
-//     res.render('search', { term:term,results: results })
-//   })
-// })
 
 
 module.exports = router;

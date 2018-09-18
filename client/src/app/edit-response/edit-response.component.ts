@@ -10,7 +10,7 @@ import {ResponsesService} from '../../services/responses.service'
   styleUrls: ['./edit-response.component.css']
 })
 export class EditResponseComponent implements OnInit {
-  
+
   response:object;
   id: any;
   private sub: any;
@@ -22,13 +22,9 @@ export class EditResponseComponent implements OnInit {
   }
 
   editResponse(mensaje){
-    console.log("ENTRO EN EL COMPONENT")
-    console.log("El id del params es: ",this.id);
-    console.log("y este es el mensaje: ", mensaje)
     this.rS
     .editResponse(this.id,mensaje)
     .subscribe((mensaje) => {
-      console.log(mensaje);
       this.router.navigate(['/ideas']);
     });
   }

@@ -1,14 +1,19 @@
-<div *ngIf="arrayResponses">
-  <div *ngFor="let response of arrayResponses">
-    {{response}} - <a [routerLink]="['/edit-response']">Edit</a>
-    <hr>
+<div *ngIf="arrayResponses" class="new-response">
+  <div *ngFor="let response of arrayResponses" class="response sombra">
+    <img src="https://media.licdn.com/dms/image/C5603AQFhYbKDddw_nA/profile-displayphoto-shrink_200_200/0?e=1538611200&v=beta&t=Qd86bosrurPhcQAvdFvS-uq6qGZxbZi26jI2_4r8THc" alt="" class="avatar">
+    <div>{{response}} <a [routerLink]="['/edit-response', response._id]"><i class="fas fa-pencil-alt edit"></i></a></div>
   </div>
-  
-  <form>
-    <div class="form-group">
-      <label for="idea">Gota tras gota se forma el diluvio!</label>
-      <textarea class="form-control" name="response" id="idea" rows="3" [(ngModel)]="response" value="{{response}}"></textarea>
+  <div class="full-width__add">
+    <div *ngIf="!addResponseStatus" (click)="changeStatus()" class="add-pointer">
+      <i class="fas fa-plus-circle add-response"></i>
     </div>
-    <button type="submit" value="Edita tu idea" name="submit" class="btn btn-primary" (click)="newResponse(response)">Aportar tu gota</button>
+  </div>
+  <form *ngIf="addResponseStatus">
+    <div class="form-group">
+      <textarea class="form-control sombra" name="response" id="idea" rows="3" [(ngModel)]="response" value="{{response}}" placeholder="Gota tras gota se forma el diluvio!"></textarea>
+    </div>
+    <div class="new-response__input">
+      <button type="submit" value="Edita tu idea" name="submit" class="btn btn-primary" (click)="newResponse(response); changeStatus()">Aportar tu gota!</button>
+    </div>
   </form>
 </div>

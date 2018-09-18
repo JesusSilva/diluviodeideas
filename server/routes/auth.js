@@ -18,7 +18,6 @@ let loginPromise = (req, user) => {
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
   const {username,name,email,espec,password,confirm_password,about_me,avatar} = req.body;
-  console.log(req.body)
   if (!username || !password) return res.status(400).json({ message: 'Provide username and password' })
   User.findOne({ username }, '_id')
     .then(foundUser =>{
@@ -41,7 +40,6 @@ router.post('/signup', (req, res, next) => {
     }) 
   })
     .catch(e => {
-      console.log(e);
       res.status(500).json(e)
     }) 
 });
@@ -83,15 +81,11 @@ router.get('/edit/:id', (req, res, next) => {
 });
 
 router.put('/profile/edit/:id', (req, res, next) => {
-  console.log("entro en el back")
   const userId = req.params.id
   const {name,email,espec,password,confirm_password,about_me,avatar} = req.body;
   const salt = bcrypt.genSaltSync(10);
   
   if (password !== confirm_password && password !=="") return res.status(500).json({ message: 'Passwords do not match' });
-  console.log("===========================================================");
-  console.log("tu password de mierda es: ",password);
-  console.log("===========================================================");
 
   let updates;
   if (req.file) { updates = { name,email,espec,about_me, avatar: req.file.filename } 
@@ -105,11 +99,9 @@ router.put('/profile/edit/:id', (req, res, next) => {
     updates = { name,email,espec,password:hashPass,about_me }
   }
   }
-  console.log("updates tiene: ",updates)
-  console.log("entro en el back")
+
   User.findByIdAndUpdate(userId, updates, {new: true, runValidators: true})
     .then(user => {
-      console.log("ESTE ES EL USER: ", user)
       res.status(200).json({ user});
     })
     .catch(err => next(err));

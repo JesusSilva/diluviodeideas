@@ -37,6 +37,5 @@ const promiseArray = ideas.map(idea => {
   //mongoose.disconnect();
   Promise.all(promiseArray)
     .then(ideaArray=> {
-      console.log(ideaArray.length)
       mongoose.disconnect()
   });

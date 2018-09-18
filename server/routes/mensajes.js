@@ -23,7 +23,6 @@ let mailOptions = {
 
 router.get("/", (req, res, next) => {
   const emisor = res.locals.user._id;
-  console.log(res.locals.user)
 
   Mensaje.find({emisor:emisor})
     .sort({ created_at: -1 })
@@ -52,16 +51,11 @@ router.get("/salida", (req, res, next) => {
 
 router.post("/salida", (req, res, next) => {
   let {asunto,receptorUsername,contenido} = req.body;
-  console.log("==================================================")
-  console.log(req.body);
-  console.log("==================================================")
-  console.log(receptorUsername,"==========> ESTE ES EL USERNAME DEL RECEPTOR")
   const emisor = res.locals.user._id;
-  console.log(emisor,"======> ESTE ES EL ID DEL USER");
   let emisorName;
 
   User.findById(emisor)
-  .then(user =>{emisorName=user.name; console.log(emisorName,"======> ESTE ES EL USERNAME")})
+  .then(user =>{emisorName=user.name;})
   .catch(e => {
     console.log(e);
     res.status(500).json({ message: "ey polluelo revisa el codigo que fallas en algo"})
@@ -69,7 +63,6 @@ router.post("/salida", (req, res, next) => {
 
 	User.findOne({username:receptorUsername})
 		.then(user =>{
-      console.log(user);
       receptor = user._id;
       receptorMail = user.email;
 
@@ -80,7 +73,6 @@ router.post("/salida", (req, res, next) => {
       mailOptions.html = (`El usuario <b>${emisorName}</b> te ha enviado un mensaje privado,<br> para poder verlo, accede a: <a href=http://diluviodeideas.com>Diluvio de Ideas</a>`)
       
       const newMensaje = new Mensaje(mensaje);
-      console.log("EL MENSAJE CONTIENE ========>",mensaje)
       newMensaje.save()
         .then(mensaje => {
           transporter.sendMail(mailOptions, function (error, info) {

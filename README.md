@@ -1,2 +1,2 @@
-# Diluviodeideas
-diluviodeideas es una plataforma de brainstorming creada para recibir feedback de profesionales del sector.
+# Diluvio de Ideas
+Diluvio de Ideas es una plataforma de brainstorming creada para recibir feedback de profesionales del sector.

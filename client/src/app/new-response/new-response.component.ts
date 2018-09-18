@@ -14,6 +14,7 @@ export class NewResponseComponent implements OnInit {
   constructor(private route:ActivatedRoute,public rS:ResponsesService, public iS:IdeasService, private router:Router) {}
 
   response:any;
+  addResponseStatus = false;
   arrayResponses:Array<any>=[];
   idea:any;
 
@@ -40,8 +41,11 @@ export class NewResponseComponent implements OnInit {
     this.rS.newResponseService(this.response, this.idea._id).subscribe(response => {
       this.router.navigate(["/detail-idea",this.idea._id]);
     });
-
     //limpieza
     this.response = [response=""]
+  }
+
+  changeStatus () {
+    this.addResponseStatus = !this.addResponseStatus;
   }
 }

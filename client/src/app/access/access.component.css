@@ -22,10 +22,10 @@ body {
   font-size: 12px;
 }
 .pen-title span .fa {
-  color: #f2ca30;
+  color: #07D13F;
 }
 .pen-title span a {
-  color: #f2ca30;
+  color: #07D13F;
   font-weight: 600;
   text-decoration: none;
 }
@@ -38,7 +38,7 @@ body {
 .rerun a {
   cursor: pointer;
   display: inline-block;
-  background: #f2ca30;
+  background: #07D13F;
   border-radius: 3px;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -81,7 +81,7 @@ body {
 #portfolio {
   bottom: 96px;
   right: 36px;
-  background: #f2ca30;
+  background: #07D13F;
   width: 44px;
   height: 44px;
   -webkit-animation: buttonFadeInUp 1s ease;
@@ -191,10 +191,10 @@ body {
 .card .title {
   position: relative;
   z-index: 1;
-  border-left: 5px solid #f2ca30;
+  border-left: 5px solid #07D13F;
   margin: 0 0 35px;
   padding: 10px 0 10px 50px;
-  color: #f2ca30;
+  color: #07D13F;
   font-size: 32px;
   font-weight: 600;
   text-transform: uppercase;
@@ -250,7 +250,7 @@ body {
 .card .input-container .bar:before, .card .input-container .bar:after {
   content: '';
   position: absolute;
-  background: #f2ca30;
+  background: #07D13F;
   width: 0;
   height: 2px;
   -webkit-transition: .2s ease;
@@ -273,7 +273,7 @@ body {
   display: inline-block;
   background: 0;
   width: 240px;
-  border: 2px solid #3B3731;
+  border: 2px solid #28283A;
   padding: 20px 0;
   font-size: 24px;
   font-weight: 600;
@@ -286,7 +286,7 @@ body {
 .card .button-container button span {
   position: relative;
   z-index: 1;
-  color: #3B3731;
+  color: #28283A;
   -webkit-transition: .3s ease;
   transition: .3s ease;
 }
@@ -296,7 +296,7 @@ body {
   top: 50%;
   left: 50%;
   display: block;
-  background: #f2ca30;
+  background: #07D13F;
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -306,10 +306,10 @@ body {
   transition: .3s ease;
 }
 .card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
-  border-color: #f2ca30;
+  border-color: #07D13F;
 }
 .card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
-  color: #f2ca30;
+  color: #07D13F;
 }
 .card .button-container button:active span, .card .button-container button:focus span {
   color: #ffffff;
@@ -357,7 +357,7 @@ body {
 }
 .card.alt .toggle {
   position: relative;
-  background: #f2ca30;
+  background: #07D13F;
   width: 140px;
   height: 140px;
   border-radius: 100%;
@@ -380,6 +380,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-transform: translate(0, 0);
           transform: translate(0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .card.alt .title,
 .card.alt .input-container,
@@ -390,8 +393,8 @@ body {
 }
 .card.alt .title {
   position: relative;
-  border-color: #3B3731;
-  color: #3B3731;
+  border-color: #28283A;
+  color: #28283A;
 }
 .card.alt .title .close {
   cursor: pointer;
@@ -399,7 +402,7 @@ body {
   top: 0;
   right: 60px;
   display: inline;
-  color: #3B3731;
+  color: #28283A;
   font-size: 58px;
   font-weight: 400;
 }
@@ -407,10 +410,10 @@ body {
   content: '\00d7';
 }
 .card.alt .input-container input {
-  color: #3B3731;
+  color: #28283A;
 }
 .card.alt .input-container input:focus ~ label {
-  color: #3B3731;
+  color: #28283A;
 }
 .card.alt .input-container input:focus ~ .bar:before, .card.alt .input-container input:focus ~ .bar:after {
   background: #ffffff;
@@ -426,11 +429,11 @@ body {
 }
 .card.alt .button-container button {
   width: 100%;
-  background: #3B3731;
-  border-color: #3B3731;
+  background: #28283A;
+  border-color: #28283A;
 }
 .card.alt .button-container button span {
-  color: #f2ca30;
+  color: #07D13F;
 }
 .card.alt .button-container button:hover {
   background: rgba(255, 255, 255, 0.9);

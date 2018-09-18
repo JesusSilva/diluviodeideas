@@ -17,18 +17,18 @@ export class IdeasingleComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.getIdeaDetails()
+    this.getIdeaDetails();
   }
 
   getIdeaDetails() {
     this.iS.getSingleIdea(this.id)
     .subscribe((idea) => {
-      console.log(idea)
-        this.getIdea(idea)
-    })
+        this.getIdea(idea);
+    });
   }
 
   getIdea(idea){
-    return this.idea=idea;
+    console.table('dentro de getidea: ' + idea);
+    return this.idea = idea;
   }
 }

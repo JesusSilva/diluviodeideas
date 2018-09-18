@@ -27,9 +27,7 @@ export class SessionService {
     return (user) => {
       if(set){
         this.user = user;
-        console.log(`Setting user, welcome ${this.user.username}`)
       }else{
-        console.log(`bye bye ${this.user.username}`)
         this.user = null
       }
       return user;
@@ -37,7 +35,6 @@ export class SessionService {
   }
 
   handleError(e) {
-    console.log(e);
     return Observable.throw(e.json().message);
   }
 

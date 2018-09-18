@@ -1,3 +1,7 @@
+body {
+  color: #2d2d43;
+}
+
 .avatar {
   border-radius: 50%;
   width: 150px;
@@ -7,27 +11,76 @@
 
 .pointer {
   cursor: pointer;
+  padding: 40px;
+}
+
+.pather:last-child {
+  margin-bottom: 100px;
 }
 
 .idea {
   display: inline-flex;
-  padding: 40px 20px;
-  margin-top: 30px;
+  margin-bottom: 25px;
+  background-color: #fff;
+  /* border-radius: 20px; */
 }
 
-.boton-fix {
-  margin-bottom: 38px;
+.fix-padding {
+  padding: 0;
 }
 
-.m-bottom{
-  margin-bottom: 30px;
+.background-green {
+  background-color: #26D75A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 220px;
+}
+
+.background-green__dark {
+  background-color: #0BC940;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+}
+
+.btn-naked {
+  background-color: transparent;
+  border: 0px;
+  color: #fff;
+}
+
+.btn-naked:hover {
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+
+.add-idea {
+  color: #0BC940;
+  font-size: 50px;
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+}
+
+.max-height-text {
+  max-height: 125px;
+  overflow: hidden;
 }
 
 .fav {
   background-position: left;
   background-repeat: no-repeat;
   cursor: pointer;
-  display: inline-block;
 }
 .fav:hover {
   background-position: right;
@@ -44,7 +97,7 @@
 }
 
 .fav-heart {
-  background-image: url("https://cssanimation.rocks/images/posts/steps/heart.png");
+  background-image: url("https://i.imgur.com/aZXAWmo.png");
   background-size: auto 50px;
   height: 50px;
   width: 50px;

@@ -24,7 +24,6 @@ export class EditIdeaComponent implements OnInit {
     this.iS
     .editIdea(idea._id,idea)
     .subscribe((idea) => {
-      console.log(idea);
       this.router.navigate(['/ideas']);
     });
   }

@@ -1,0 +1,48 @@
+.response {
+  background-color: white;
+  display: flex !important;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.response .avatar {
+  margin-right: 25px;
+}
+
+.edit {
+  color: #26D75A;
+  font-size: 20px;
+}
+
+.new-response {
+  margin-bottom: 200px;
+}
+
+.new-response__input {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-response {
+  color: #0BC940;
+  font-size: 50px;
+}
+
+.add-pointer {
+  cursor: pointer;
+}
+
+.full-width__add {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
